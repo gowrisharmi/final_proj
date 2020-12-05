@@ -1,7 +1,8 @@
-FROM php:7.0-apache
+FROM devopsedu/webapp
 
-RUN apt-get update && \
-    apt-get install -y php5-mysql && \
-    apt-get clean
+ADD website /var/www/html
 
-COPY website /var/www/html/
+RUN rm /var/www/html/index.html
+
+CMD apachectl -D FOREGROUND
+
